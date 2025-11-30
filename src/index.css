@@ -4,3 +4,8 @@
 body{
   font-family: 'Inter', sans-serif;
 }
+
+:root {
+  --color-primary: #f8fafc;
+  --color-background: #1f1f1f;
+}
