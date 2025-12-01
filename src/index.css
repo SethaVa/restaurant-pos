@@ -3,10 +3,27 @@
 
 body{
   font-family: 'Inter', sans-serif;
+  background: #232323;
 }
 
 :root {
   --color-primary: #f8fafc;
+  --color-secondary: #ababab;
   --color-background: #1f1f1f;
+  --color-card-background: #1a1a1a;
   --color-bg-footer: #262626;
+  --color-percentage: #02ca3a;
+  --color-currency: #f6b100;
+  --color-light-blue: #025cca;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

@@ -3,7 +3,7 @@ import { FaBell, FaSearch, FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
   return (
-    <header className='flex justify-between items-center py-4 px-8 bg-[var(--color-background)]'>
+    <header className='flex justify-between items-center py-4 px-8 bg-[var(--color-card-background)]'>
       {/* LOGO */}
       <div className='flex items-center gap-2'>
         <img src={logo} className='h-8 w-8' alt='restro logo' />
