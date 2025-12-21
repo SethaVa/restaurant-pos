@@ -3,7 +3,7 @@ import { FaCheckDouble, FaCircle } from "react-icons/fa";
 
 const OrderCard = () => {
   return (
-    <div className="w-[500px] bg-[var(--color-bg-footer)] p-4 rounded-lg mb-4">
+    <div className="w-[500px] bg-[var(--color-bg-footer)] p-4 rounded-lg">
       <div className="flex items-center gap-5">
         <button className="bg-[var(--color-currency)] p-3 text-xl font-bold rounded-lg">
           AM
