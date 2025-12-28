@@ -7,25 +7,35 @@ import RecentOrders from "../components/home/RecentOrders";
 import PopularDishes from "../components/home/PopularDishes";
 
 const Home = () => {
-    return (
-        <section className="bg-[var(--color-background)] h-[calc(100vh-5rem)] overflow-hidden flex gap-3">
-            {/* LEFT DIV */}
-            <div className="flex-[3] ">
-                <Greetings />
-                <div className="flex items-center w-full gap-3 px-8 mt-8">
-                    <MiniCard title="Total Earnings" icon={<BsCashCoin />} number={512} footerNum={1.6}/>
-                    <MiniCard title="In Progress" icon={<GrInProgress />} number={16} footerNum={3.6}/>
-                </div>
-                <RecentOrders />
-            </div>
+  return (
+    <section className="bg-[var(--color-background)] h-[calc(100vh-5rem)] overflow-hidden flex gap-3">
+      {/* LEFT DIV */}
+      <div className="flex-[3] ">
+        <Greetings />
+        <div className="flex items-center w-full gap-3 px-8 mt-8">
+          <MiniCard
+            title="Total Earnings"
+            icon={<BsCashCoin />}
+            number={512}
+            footerNum={1.6}
+          />
+          <MiniCard
+            title="In Progress"
+            icon={<GrInProgress />}
+            number={16}
+            footerNum={3.6}
+          />
+        </div>
+        <RecentOrders />
+      </div>
 
-            {/* RIGHT DIV */}
-            <div className="flex-[2]">
-                <PopularDishes />
-            </div>
-            <BottomNav />
-        </section>
-    )
-}
+      {/* RIGHT DIV */}
+      <div className="flex-[1]">
+        <PopularDishes />
+      </div>
+      <BottomNav />
+    </section>
+  );
+};
 
 export default Home;

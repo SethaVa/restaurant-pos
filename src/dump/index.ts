@@ -92,7 +92,14 @@ export const tables = [
     { id: 15, name: "Table 15", status: "Booked", initial: "TW", seats: 3 }
   ];
   
-export const startersItem = [
+export interface MenuItem {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+}
+
+export const startersItem: MenuItem[] = [
     {
       id: 1,
       name: "Paneer Tikka",
@@ -131,7 +138,7 @@ export const startersItem = [
     }
   ];
   
-export const mainCourse = [
+export const mainCourse: MenuItem[] = [
   {
     id: 1,
     name: "Butter Chicken",
@@ -170,7 +177,7 @@ export const mainCourse = [
   }
 ];
 
-export const beverages = [
+export const beverages: MenuItem[] = [
   {
     id: 1,
     name: "Masala Chai",
@@ -209,7 +216,7 @@ export const beverages = [
   }
 ];
 
-export const soups = [
+export const soups: MenuItem[] = [
   {
     id: 1,
     name: "Tomato Soup",
@@ -248,7 +255,7 @@ export const soups = [
   }
 ];
 
-export const desserts = [
+export const desserts: MenuItem[] = [
   {
     id: 1,
     name: "Gulab Jamun",
@@ -275,7 +282,7 @@ export const desserts = [
   }
 ];
 
-export const pizzas = [
+export const pizzas: MenuItem[] = [
   {
     id: 1,
     name: "Margherita Pizza",
@@ -296,7 +303,7 @@ export const pizzas = [
   }
 ];
 
-export const alcoholicDrinks = [
+export const alcoholicDrinks: MenuItem[] = [
   {
     id: 1,
     name: "Beer",
@@ -335,7 +342,7 @@ export const alcoholicDrinks = [
   }
 ];
 
-export const salads = [
+export const salads: MenuItem[] = [
   {
     id: 1,
     name: "Caesar Salad",
@@ -368,8 +375,15 @@ export const salads = [
   }
 ];
 
+export interface Menu {
+  id: number;
+  name: string;
+  bgColor: string;
+  icon: string; // emoji
+  items: MenuItem[];
+}
 
-export const menus = [
+export const menus: Menu[] = [
   { id: 1, name: "Starters", bgColor: "#b73e3e" ,icon: "🍲", items: startersItem },
   { id: 2, name: "Main Course", bgColor: "#5b45b0" ,icon: "🍛", items: mainCourse },
   { id: 3, name: "Beverages", bgColor: "#7f167f" ,icon: "🍹", items: beverages },

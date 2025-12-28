@@ -1,10 +1,20 @@
 import React from "react";
 import type { Table } from "../../pages/tables";
 import { getRandomBG } from "../../utils/getRandomColor";
+import { useNavigate } from "react-router";
 
 const TableCard = ({ id, name, status, initial, seats }: Table) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if (status === "Booked") return;
+    navigate("/menu");
+  };
+
   return (
-    <div className="w-[300px] bg-[var(--color-bg-footer)] p-4 rounded-lg cursor-pointer hover:bg-[var(--color-dark-charcoal)]">
+    <div
+      onClick={handleClick}
+      className="w-[300px] bg-[var(--color-bg-footer)] p-4 rounded-lg cursor-pointer hover:bg-[var(--color-dark-charcoal)]"
+    >
       <div className="flex items-center justify-between px-1">
         <h1 className="text-[var(--color-whitesmoke)] text-xl font-semibold">
           {name}
