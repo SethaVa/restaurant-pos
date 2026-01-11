@@ -5,10 +5,16 @@ import { FaHome } from "react-icons/fa";
 import { MdOutlineReorder, MdTableBar } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router";
 import Modal from "./Modal";
+import { setCustomer } from "../../redux/slices/customerSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 const BottomNav = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  const [name, setName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -25,6 +31,18 @@ const BottomNav = () => {
   const decrease = () => {
     if (guestNumber == 0) return;
     setGuestNumber((prev) => prev - 1);
+  };
+
+  const handleCreateOrder = () => {
+    // send the data into store
+    dispatch(
+      setCustomer({
+        customerName: name,
+        customerPhone: phone,
+        guests: guestNumber,
+      })
+    );
+    navigate("/tables");
   };
 
   return (
@@ -90,6 +108,8 @@ const BottomNav = () => {
           </label>
           <div className="flex items-center rounded-lg p-3 px-4 bg-[var(--color-background)]">
             <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               type="text"
               name=""
               placeholder="Enter customer name"
@@ -104,6 +124,8 @@ const BottomNav = () => {
           </label>
           <div className="flex items-center rounded-lg p-3 px-4 bg-[var(--color-background)]">
             <input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               type="number"
               name=""
               placeholder="Enter customer phone"
@@ -130,7 +152,7 @@ const BottomNav = () => {
         </div>
         <button
           className="w-full bg-[var(--color-currency)] text-[var(--color-whitesmoke)] rounded-lg py-3 mt-8 hover:bg-yellow-700"
-          onClick={() => navigate("/tables")}
+          onClick={handleCreateOrder}
         >
           Create Order
         </button>

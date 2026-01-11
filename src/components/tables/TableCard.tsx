@@ -2,17 +2,22 @@ import React from "react";
 import type { Table } from "../../pages/tables";
 import { getRandomBG } from "../../utils/getRandomColor";
 import { useNavigate } from "react-router";
+import { setCustomerTable } from "../../redux/slices/customerSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 const TableCard = ({ id, name, status, initial, seats }: Table) => {
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
-  const handleClick = () => {
-    if (status === "Booked") return;
+  const handleClick = (name: string) => {
+    // if (status === "Booked") return;
+    dispatch(setCustomerTable({ tableNo: name }));
     navigate("/menu");
   };
 
   return (
     <div
-      onClick={handleClick}
+      onClick={() => handleClick(name)}
       className="w-[300px] bg-[var(--color-bg-footer)] p-4 rounded-lg cursor-pointer hover:bg-[var(--color-dark-charcoal)]"
     >
       <div className="flex items-center justify-between px-1">

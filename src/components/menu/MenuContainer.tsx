@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { menus, type Menu } from "../../dump";
+import { menus, type Menu, type MenuItem } from "../../dump";
 import { GrRadialSelected } from "react-icons/gr";
 import { formatUSD } from "../../utils/formatUSD";
+import { FaShoppingCart } from "react-icons/fa";
+import { useAppDispatch } from "../../redux/hooks";
+import { addItems } from "../../redux/slices/cartSlice";
 
 export interface SelectedMenuItem {
   id: number;
@@ -15,6 +18,7 @@ const MenuContainer = () => {
   const [selectedCategory, setSelectedCategirt] = useState<Menu | null>(null);
   const [itemCount, setItemCount] = useState<number>(0);
   const [itemId, setItemId] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
 
   const increase = (id: number) => {
     setItemId(id);
@@ -24,6 +28,21 @@ const MenuContainer = () => {
     setItemId(id);
     if (itemCount <= 0) return;
     setItemCount((prev) => prev - 1);
+  };
+  const handleAddToCart = (item: MenuItem) => {
+    if (itemCount === 0) return;
+
+    const { name, price } = item;
+    const newCart = {
+      id: new Date(),
+      name,
+      pricePerQuantity: price,
+      quantity: itemCount,
+      price: price * itemCount,
+    };
+
+    dispatch(addItems(newCart));
+    setItemCount(0);
   };
 
   return (
@@ -64,9 +83,18 @@ const MenuContainer = () => {
               key={item.id}
               className="flex flex-col items-start justify-between p-4 rounded-lg h-[150px] cursor-pointer bg-[var(--color-card-background)] hover:bg-[var(--color-surface-dark)]"
             >
-              <h1 className="text-[var(--color-whitesmoke)] text-lg font-semibold">
-                {item.name}
-              </h1>
+              <div className="flex items-start justify-between w-full">
+                <h1 className="text-[var(--color-whitesmoke)] text-lg font-semibold">
+                  {item.name}
+                </h1>
+                <button onClick={() => handleAddToCart(item)}>
+                  <FaShoppingCart
+                    size={30}
+                    className="bg-[var(--color-dark-green)] text-[var(--color-percentage)] p-2 rounded-lg cursor-pointer"
+                  />
+                </button>
+              </div>
+
               <div className="flex items-center justify-between w-full">
                 <p className="text-[var(--color-secondary)] text-xl font-bold">
                   {formatUSD(item.price)}

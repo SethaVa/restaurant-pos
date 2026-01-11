@@ -1,12 +1,15 @@
 import React from "react";
 import { FaCheckDouble, FaCircle } from "react-icons/fa";
+import Avatar from "../shared/Avatar";
 
 const OrderList = () => {
   return (
     <div className="flex items-center gap-5 mb-3">
-      <button className="bg-[var(--color-currency)] p-3 text-xl font-bold rounded-lg">
-        AM
-      </button>
+      <Avatar
+        initials="Amrit Raj"
+        size="medium"
+        className="bg-[var(--color-currency)] p-3 text-xl font-bold rounded-lg"
+      />
       <div className="flex items-center justify-between w-[100%]">
         <div className="flex flex-col items-start gap-1">
           <h1 className="text-[var(--color-primary)] text-lg font-semibold tracking-wide">
